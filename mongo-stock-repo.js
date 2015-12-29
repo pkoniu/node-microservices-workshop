@@ -6,7 +6,7 @@ module.exports = function(books) {
             return books.then((books) =>
                 books.updateOne(
                     {'isbn': isbn},
-                    {$set:{'isbn':isbn,'amount':amount}},
+                    {$set:{'isbn':isbn,'count':amount}},
                     {upsert:true})
                 );
         },

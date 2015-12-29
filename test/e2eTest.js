@@ -34,6 +34,7 @@ describe('Book inventory should', function() {
             });
     });
 
+    //TODO: wat? y u no work
     // it('respond with <div> with amount of book', function(done) {
     //     request(app)
     //         .get('/stock/666')
