@@ -7,7 +7,6 @@ module.exports = function(repo) {
         },
 
         findByISBN: function(req, res, next) {
-            //TODO: refactor data being saved to db
             repo.getByISBN(req.params.isbn)
                 .then((data) => res.status(200).send('<div>'+ data.count +' copies left.</div>'))
                 .catch(next);
@@ -19,17 +18,11 @@ module.exports = function(repo) {
                 .catch(next);
         },
 
-        findBooksAmount: function(req, res, next) {
-            repo.getCount(req.params.isbn)
-                .then((data) => res.status(200).json(data))
-                .catch(next);
-        },
-
-        saveBook: function(req, res, next) { //TODO: stock up, not override
+        saveBook: function(req, res, next) {
             var isbn = req.body.isbn;
-            var amount = req.body.amount;
+            var count = req.body.count;
 
-            repo.save(isbn, amount)
+            repo.save(+isbn, +count)
                 .then((msg) => res.status(201).json(msg))
                 .catch(next);
         },

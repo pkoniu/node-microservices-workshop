@@ -2,13 +2,10 @@
 
 module.exports = function(books) {
     return {
-        save: function(isbn, amount) {
+        save: function(isbn, count) {
             return books.then((books) =>
-                books.updateOne(
-                    {'isbn': isbn},
-                    {$set:{'isbn':isbn,'count':amount}},
-                    {upsert:true})
-                );
+                books.updateOne({'isbn': isbn},{$set:{'isbn':isbn},$inc:{'count':count}},{upsert:true})
+            );
         },
 
         getAll: function() {
@@ -17,11 +14,6 @@ module.exports = function(books) {
 
         getByISBN: function(isbn) {
             return books.then((books) => books.find({'isbn': parseInt(isbn)}).limit(1).next());
-        },
-
-        getCount: function(isbn) {
-            return books.then((books) => books.find({'isbn': parseInt(isbn)}).limit(1).next())
-                        .then((result) => result.amount || null);
         }
     };
 };

@@ -12,9 +12,9 @@ module.exports = function(repo) {
     app.use(bodyParser.json());
 
     app.get('/', routes.welcome);
-    app.get('/stock/:isbn', routes.findByISBN);
     app.get('/stock', routes.findAll);
-    app.get('/stock/count/:isbn', routes.findBooksAmount);
+    app.get('/stock/:isbn', routes.findByISBN);
+
     app.post('/stock', routes.saveBook);
 
     app.use(routes.clientError);

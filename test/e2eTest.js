@@ -35,7 +35,7 @@ describe('Book inventory should', function() {
     });
 
     //TODO: wat? y u no work
-    // it('respond with <div> with amount of book', function(done) {
+    // it('respond with <div> with count of book', function(done) {
     //     request(app)
     //         .get('/stock/666')
     //         .set('Accept', 'text/html')
@@ -50,25 +50,11 @@ describe('Book inventory should', function() {
     //         });
     // });
 
-    it('respond with correct amount of books', function(done) {
-        request(app)
-            .get('/stock/count/666')
-            .expect(200)
-            .end(function(err, res) {
-                if(err) {
-                    done(err);
-                } else {
-                    assert.equal(res.body, 123);
-                    done();
-                }
-            });
-    });
-
     it('respond with msg when saving to db', function(done) {
         request(app)
             .post('/stock')
             .set('Content-Type', 'application/json')
-            .send({isbn: 123, amount: 10})
+            .send({isbn: 123, count: 10})
             .expect(201)
             .end(function(err, res) {
                 if(err) {
