@@ -1,23 +1,24 @@
 'use strict';
 
-var MongoClient = require('mongodb').MongoClient;
-var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/microservices_workshop_db';
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
 
-var db = MongoClient.connect(url);
+module.exports = function(repo) {
+    var app = express();
+    var routes = require('./routes')(repo);
 
-var books = db.then(function(db) {
-    return db.collection("books");
-});
+    app.use(routes.logReq);
+    app.use(bodyParser.json());
 
-var repo = require('./mongo-stock-repo')(books);
+    app.get('/', routes.welcome);
+    app.get('/stock/:isbn', routes.findByISBN);
+    app.get('/stock', routes.findAll);
+    app.get('/stock/count/:isbn', routes.findBooksAmount);
+    app.post('/stock', routes.saveBook);
 
-var app = require('./server')(repo);
+    app.use(routes.clientError);
+    app.use(routes.errorHandler);
 
-var PORT_NO = process.env.PORT || 8000;
-
-var server = app.listen(PORT_NO, function() {
-    var host = server.address().address;
-    var port = server.address().port;
-
-    console.log('Listening at http://%s:%s', host, port);
-});
+    return app;
+};
