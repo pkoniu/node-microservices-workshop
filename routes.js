@@ -24,7 +24,7 @@ module.exports = function(repo) {
                 .catch(next);
         },
 
-        saveBook: function(req, res, next) {
+        saveBook: function(req, res, next) { //TODO: stock up, not override
             var isbn = req.body.isbn;
             var amount = req.body.amount;
 
