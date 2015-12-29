@@ -11,7 +11,7 @@
     "watch": "nodemon app.js",
     "infrastructure:test": "node infrastructure/test.js",
     "infrastructure:prod": "node infrastructure/prod.js",
-    "smoke:test": "curl https://node-microservices-ws-tt.herokuapp.com -f",
+    "smoke:test": "curl https://node-microservices-ws-test.herokuapp.com -f",
     "smoke:prod": "curl https://node-microservices-ws.herokuapp.com -f"
   },
   "author": "",
