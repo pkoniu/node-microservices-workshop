@@ -1,7 +1,7 @@
 'use strict';
 
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost:27017/microservices_workshop_db';
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/microservices_workshop_db';
 
 var db = MongoClient.connect(url);
 
