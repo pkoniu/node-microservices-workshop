@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "test": "mocha",
     "test:xunit": "npm run test -- --reporter xunit",
     "lint": "jshint --exclude=node_modules/** **.js",
-    "watch": "nodemon app.js",
+    "watch": "nodemon src/server.js",
     "infrastructure:test": "node infrastructure/test.js",
     "infrastructure:prod": "node infrastructure/prod.js",
     "smoke:test": "curl https://node-microservices-ws-test.herokuapp.com -f",

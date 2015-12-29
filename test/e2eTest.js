@@ -4,7 +4,7 @@ var request = require('supertest');
 var assert = require('assert');
 
 var db = require('./inMemoryStock')();
-var app = require('./../app')(db);
+var app = require('./../src/app')(db);
 
 describe('Book inventory should', function() {
     it('respond with hello', function(done) {
