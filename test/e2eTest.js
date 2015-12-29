@@ -34,19 +34,20 @@ describe('Book inventory should', function() {
             });
     });
 
-    it('respond with one book that matches param', function(done) {
-        request(app)
-            .get('/stock/666')
-            .expect(200)
-            .end(function(err, res) {
-                if(err) {
-                    done(err);
-                } else {
-                    assert.equal(res.body.isbn, 666);
-                    done();
-                }
-            });
-    });
+    // it('respond with <div> with amount of book', function(done) {
+    //     request(app)
+    //         .get('/stock/666')
+    //         .set('Accept', 'text/html')
+    //         .expect(200)
+    //         .end(function(err, res) {
+    //             if(err) {
+    //                 done(err);
+    //             } else {
+    //                 assert.equal(res.body, '<div>123 copies left</div>');
+    //                 done();
+    //             }
+    //         });
+    // });
 
     it('respond with correct amount of books', function(done) {
         request(app)

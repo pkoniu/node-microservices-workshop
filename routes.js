@@ -7,8 +7,9 @@ module.exports = function(repo) {
         },
 
         findByISBN: function(req, res, next) {
+            //TODO: refactor data being saved to db
             repo.getByISBN(req.params.isbn)
-                .then((data) => res.status(200).json(data))
+                .then((data) => res.status(200).send('<div>'+ data.count +' copies left.</div>'))
                 .catch(next);
         },
 

@@ -13,7 +13,7 @@ var repo = require('./mongo-stock-repo')(books);
 
 var app = require('./server')(repo);
 
-var PORT_NO = process.env.PORT || 3000;
+var PORT_NO = process.env.PORT || 8000;
 
 var server = app.listen(PORT_NO, function() {
     var host = server.address().address;
