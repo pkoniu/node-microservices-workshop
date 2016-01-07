@@ -13,5 +13,5 @@ module.exports = {
         'http-end-to-end-continue': { enabled: false }
     },
     formation: [],
-    log_drains: [],
+    log_drains: [ 'syslog://data.logentries.com:13636' ]
 };
